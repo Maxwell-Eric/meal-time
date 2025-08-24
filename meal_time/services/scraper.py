@@ -2,6 +2,7 @@
 
 from meal_time.models.recipe import Recipe
 from meal_time.ml.step_time_predictor import StepTimePredictor
+from meal_time.utils.step_splitter import StepSplitter
 from recipe_scrapers import scrape_me  # assuming you are using this library
 
 
@@ -17,14 +18,19 @@ class ScraperService:
         """
         scraper = scrape_me(url)
 
+        # Extract and split steps with multiple time instructions
+        original_steps = scraper.instructions().split("\n")
+        steps = [step.strip() for step in original_steps if step.strip()]
+        split_steps, split_step_times = StepSplitter.split_recipe_steps(steps)
+
         recipe = Recipe(
             name=scraper.title(),
             ingredients=scraper.ingredients(),
-            steps=scraper.instructions().split("\n"),
+            steps=split_steps,
             prep_time=scraper.prep_time(),
             cook_time=scraper.cook_time(),
             total_time=scraper.total_time(),
-            step_times=[]
+            step_times=split_step_times
         )
 
         # Generate step_times if missing or count mismatch

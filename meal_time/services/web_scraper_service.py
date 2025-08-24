@@ -1,6 +1,7 @@
 # meal_time/services/web_scraper_service.py
 from meal_time.models.recipe import Recipe
 from meal_time.ml.step_time_predictor import StepTimePredictor
+from meal_time.utils.step_splitter import StepSplitter
 try:
     from recipe_scrapers import scrape_me
 except ImportError:
@@ -45,6 +46,9 @@ class WebScraperService:
             else:
                 steps = [str(instructions)]
 
+            # Split steps with multiple time instructions
+            split_steps, split_step_times = StepSplitter.split_recipe_steps(steps)
+
             try:
                 prep_time = scraper.prep_time()
             except Exception:
@@ -63,11 +67,11 @@ class WebScraperService:
             recipe = Recipe(
                 name=scraper.title() or "Scraped Recipe",
                 ingredients=scraper.ingredients() or [],
-                steps=steps,
+                steps=split_steps,
                 prep_time=prep_time,
                 cook_time=cook_time,
                 total_time=total_time,
-                step_times=[]
+                step_times=split_step_times
             )
 
             # Generate step_times if missing or count mismatch
