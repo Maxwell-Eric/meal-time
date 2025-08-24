@@ -45,13 +45,28 @@ class WebScraperService:
             else:
                 steps = [str(instructions)]
 
+            try:
+                prep_time = scraper.prep_time()
+            except Exception:
+                prep_time = None
+
+            try:
+                cook_time = scraper.cook_time()
+            except Exception:
+                cook_time = None
+
+            try:
+                total_time = scraper.total_time()
+            except Exception:
+                total_time = None
+
             recipe = Recipe(
                 name=scraper.title() or "Scraped Recipe",
                 ingredients=scraper.ingredients() or [],
                 steps=steps,
-                prep_time=scraper.prep_time(),
-                cook_time=scraper.cook_time(),
-                total_time=scraper.total_time(),
+                prep_time=prep_time,
+                cook_time=cook_time,
+                total_time=total_time,
                 step_times=[]
             )
 
