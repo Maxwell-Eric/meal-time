@@ -240,6 +240,13 @@ class StepSplitter:
         # Remove extra whitespace
         text = re.sub(r'\s+', ' ', text.strip())
         
+        # Remove leading conjunctions that might be left over
+        text = re.sub(r'^(then|and then|next|after that|followed by)\s+', '', text, flags=re.IGNORECASE)
+        
+        # Remove trailing punctuation from splitting (like ",.") and replace with single period
+        text = re.sub(r'[,;]\s*\.\s*$', '.', text)
+        text = re.sub(r'[,;]\s*$', '.', text)
+        
         # Capitalize first letter
         if text and text[0].islower():
             text = text[0].upper() + text[1:]
@@ -247,11 +254,6 @@ class StepSplitter:
         # Ensure it ends with a period if it doesn't already end with punctuation
         if text and text[-1] not in '.!?':
             text += '.'
-        
-        # Remove leading conjunctions that might be left over
-        text = re.sub(r'^(then|and then|next|after that|followed by)\s+', '', text, flags=re.IGNORECASE)
-        if text and text[0].islower():
-            text = text[0].upper() + text[1:]
         
         return text
     
