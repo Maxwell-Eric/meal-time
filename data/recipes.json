@@ -1,6 +1,6 @@
 [
     {
-        "name": "This Tomato Tart Looks Fancy but Couldn't Be Easier",
+        "name": "Tomato Tart",
         "ingredients": [
             "1/2 recipe old-fashioned flaky pie dough prepared through step 2 or 1 sheet frozen puff pastry (397 g; 14 ounces), thawed",
             "4 tablespoons (2 ounces; 57 g) unsalted butter, softened, divided",
@@ -30,7 +30,16 @@
         "prep_time": 20,
         "cook_time": 70,
         "total_time": 235,
-        "step_times": []
+        "step_times": [
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
+        ]
     },
     {
         "name": "Vodka Pizza",
@@ -63,6 +72,58 @@
             45,
             10,
             10
+        ]
+    },
+    {
+        "name": "Rib Lovers, Meet the Pork Steak: A St. Louis Barbecue Legend",
+        "ingredients": [
+            "2 tablespoons (18 g) Diamond Crystal kosher salt; for table salt, use half as much by volume",
+            "2 tablespoons (24 g) light brown sugar",
+            "1 tablespoon (7 g) fresh ground pepper",
+            "2 teaspoons (4 g) dry mustard powder",
+            "2 teaspoons (4 g) MSG (optional but recommended)",
+            "2 cups (480 ml) ketchup, (see notes)",
+            "1/2 cup (120 ml) apple cider vinegar",
+            "1/2 cup (120 ml) Worcestershire sauce",
+            "2 tablespoons Louisiana-style cayenne hot sauce, such as Crystal",
+            "2 teaspoons Diamond Crystal kosher salt; for table salt, use half as much by volume",
+            "1/2 cup (110 g) light brown sugar",
+            "3/4 teaspoon ground cloves",
+            "4 bone-in pork blade steaks (1 to 1 1/2 pounds each; 5-6 pounds total), about 1-inch thick",
+            "Simple Pork Steak Rub recipe from above",
+            "St. Louis Barbecue Sauce recipe from above",
+            "1 (12-ounce) can American lager, such as Budweiser"
+        ],
+        "steps": [
+            "For the Simple Pork Steak Rub: In a small bowl, add all ingredients and whisk to combine. Store in an airtight container until ready to use or up to 3 months.",
+            "For Preparing the Steaks: Pat pork steaks dry with paper towels. Season generously on both sides with prepared pork steak rub and gently pat rub into steaks to help adhere. Transfer to a wire rack set over a rimmed baking sheet and refrigerate uncovered for at least 4 hours and up to 12 hours.",
+            "For the St. Louis Barbecue Sauce: In a medium saucepan, combine all ingredients. Bring to a simmer over medium-high heat, then reduce heat to medium-low and continue simmering, stirring occasionally, until slightly thickened, 10 to 12 minutes. Lower heat if necessary to maintain a gentle simmer. Let cool, then refrigerate until ready to use or up to 1 month.",
+            "If Using a Charcoal Grill: Prepare a charcoal grill for two-zone cooking at 250 to 275\u00b0F: Spread 3 quarts of unlit charcoal briquettes (about 1/2 chimney's worth of coals) evenly over half of the grill grate. Light a 1/4 chimney (about 1 1/2 quarts) of charcoal. When top coals are partially covered with ash, pour evenly over unlit coals. Set cooking grate in place and cover, positioning the top vent over the empty side of the grill, not the coals. Adjust bottom vent of grill to half open and adjust top vent of lid to 3/4 open. Attach a probe thermometer to the grill grate, if using, away from the direct heat (if not using, monitor heat with thermometer on grill lid). When grill reaches about 200\u00b0F, adjust both vents as needed to maintain a final cooking temperature between 250-275\u00b0F. If grill runs hot, narrow the vents slightly. If temperature drops too low, open vents a little bit. In case of dramatic temperature fluctuations that you can\u2019t fix by adjusting the vents, add or remove coals using tongs. That should be a last resort. If Using a Gas Grill: Preheat gas grill with all burners on high until hot, about 10 minutes. Leave on primary burner (the one closest to the gas tank), and turn off remaining burners to create an indirect heat zone around 250 to 275\u00b0F.",
+            "Set a 9x13-inch disposable aluminum foil pan on the cool side of the grill. Add barbecue sauce and beer to pan and stir to combine and hold warm.",
+            "Transfer steaks into the sauce one at a time, flip to coat. Then, stack steaks in sauce in pan in two layers.",
+            "If you have a leave-in thermometer, insert it into the thickest part of one steak. Cover pan tightly with 2 layers of foil, crimping the edges to seal. Close grill and braise steaks until their internal temperature registers 195-200\u00b0F with a leave-in or instant-read thermometer, about 2 to 3 hours. Halfway through cooking, rotate the pan and quickly (so you lose as little heat as possible) and carefully remove foil from pan using grilling gloves or pot holders, and flip steak stacks so that the steaks braising on the bottom are on top, and vice-versa. Re-seal pan with your 2 layers of foil, and continue cooking.",
+            "If using a charcoal grill, light another half chimney of coals during the final 15 minutes of cooking.",
+            "To Finish the Steaks: Remove pan from grill. Carefully remove the steaks from the pan to a cutting board or plate using a spatula and tongs (they will be tender!) and set aside while reheating the grill. If using a charcoal grill , scatter a 1/2 chimney (about 3 quarts) of lit coals evenly across bottom of grill grate. If using a gas grill, raise temperature to medium-high. Close lid and let heat for 5 to 10 minutes. While the grill preheats, using a ladle or large spoon, skim as much fat as possible off the surface of the braising liquid.",
+            "Once grill is hot, use a spatula to carefully transfer steaks to the hot grill and cook, flipping carefully once every 2 minutes and basting with the skimmed braising liquid, until steaks develop a reddish-brown lacquered finish and some char along the edges, 8 to 10 minutes. If using a gas grill, lower temperature as needed to prevent burning. If using a charcoal grill, be prepared to flip more often for even charring. Stop basting before the final flip to allow the glaze to set.",
+            "Alternative Oven Method: In a 9x13 pan, add beer and barbecue sauce and stir to combine. Transfer seasoned steaks to a wire rake set in a rimmed baking sheet. Adjust oven rack to 6 inches from top broiler unit. Preheat broiler on high and broil steaks until lightly charred, about 5 minutes per side. Transfer steaks to sauce in pan and cover tightly with 2 layers of foil. Adjust oven temperature to 250\u00b0F (120\u00b0C). Braise steaks in a tightly covered pan until their internal temperature registers 195-200\u00b0F with an instant-read thermometer, 2 1/2 to 3 hours, flipping and checking for tenderness as described in step 7 above. Carefully remove steaks from braising liquid and transfer to a wire rack set in a rimmed baking sheet. Broil, using a basting or pastry brush to brush each side with sauce twice, until red and lightly charred, 3 to 5 minutes per side. Watch closely to avoid burning.",
+            "To Finish: Transfer steaks to a cutting board and let steaks rest for 5 to 10 minutes. Slice and serve hot. Serve remaining braising liquid on the side, if desired."
+        ],
+        "prep_time": 15,
+        "cook_time": 150,
+        "total_time": 405,
+        "step_times": [
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
         ]
     }
 ]
