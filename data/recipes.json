@@ -125,5 +125,43 @@
             5,
             5
         ]
+    },
+    {
+        "name": "Pasta With 20 Cloves of Garlic",
+        "ingredients": [
+            "20 garlic cloves",
+            "12 oz. bucatini or spaghetti",
+            "1 tsp. Diamond Crystal or \u00bd tsp. Morton kosher salt, divided, plus more",
+            "7 Tbsp. extra-virgin olive oil, divided",
+            "\u00bd cup panko",
+            "5 Tbsp. nutritional yeast, divided",
+            "1 Tbsp. finely grated lemon zest",
+            "2\u00bd tsp. freshly ground pepper, divided",
+            "\u2154 cup (loosely packed) finely chopped parsley",
+            "1 Tbsp. all-purpose flour",
+            "1 Tbsp. fresh lemon juice",
+            "1 tsp. soy sauce"
+        ],
+        "steps": [
+            "Smash 20 garlic cloves with the flat side of a chef\u2019s knife, then chop very coarsely.",
+            "Cook 12 oz. bucatini or spaghetti in a large pot of boiling salted water, stirring occasionally, until very al dente, about 1 minute less than package directions. Drain, reserving 2 cups pasta cooking liquid; reserve pot.",
+            "Meanwhile, heat 3 Tbsp. extra-virgin olive oil in a medium skillet over medium. Cook garlic, stirring often, until pale golden around the edges, about 5 minutes. Using a slotted spoon, transfer garlic to a plate, leaving oil behind.",
+            "Add \u00bd cup panko and 3 Tbsp. nutritional yeast to same skillet and cook, stirring often, until panko is evenly golden brown, about 4 minutes. Remove from heat and add 1 Tbsp. finely grated lemon zest, 1 tsp. freshly ground pepper, and \u00bd tsp. Diamond Crystal or \u00bc tsp. Morton kosher salt; stir vigorously to combine. Transfer to a separate plate and let cool.",
+            "Heat remaining 4 Tbsp. extra-virgin olive oil in reserved pot over medium-high. Add \u2154 cup (loosely packed) finely chopped parsley, 1 Tbsp. all-purpose flour, \u00bd tsp. Diamond Crystal or \u00bc tsp. Morton kosher salt, garlic, and remaining 2 Tbsp. nutritional yeast and 1\u00bd tsp. freshly ground pepper; stir to combine. Cook, stirring occasionally, until parsley is frizzled, about 2 minutes. Pour in 2 cups reserved pasta cooking liquid, bring to a simmer, and cook until sauce is slightly thickened, about 5 minutes.",
+            "Transfer pasta to sauce and cook, tossing vigorously, until pasta is al dente and sauce is thickened and coats pasta, about 4 minutes. Remove from heat and add 1 Tbsp. fresh lemon juice and 1 tsp. soy sauce; toss to combine. Taste and season with more salt if needed.",
+            "Divide pasta among plates or shallow bowls. Sprinkle panko mixture over."
+        ],
+        "prep_time": null,
+        "cook_time": null,
+        "total_time": null,
+        "step_times": [
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
+        ]
     }
 ]
