@@ -1,4 +1,4 @@
-# streamlit/app.py
+# streamlit/Home.py
 import streamlit as st
 from src.meal_time_logic.services.recipe_service import RecipeService
 
@@ -9,6 +9,24 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <h1 style="font-family: 'Arial', sans-serif; font-size: 48px; text-align: center;">
+        🍴 Meal Time with 🍴<br>🌈<span style="font-family: 'Great Vibes', cursive; font-size: 96px; color: #800080;">
+        Paige</span>🪄
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 
 # Initialize recipe service and store in session state
 @st.cache_resource
@@ -29,7 +47,6 @@ if 'recipe_service' not in st.session_state:
 service = st.session_state.recipe_service
 
 # HOME PAGE CONTENT
-st.title("🍴 Welcome to Meal Time!")
 st.markdown("*Your personal cooking timeline organizer*")
 
 # Quick stats
