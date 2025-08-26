@@ -3,11 +3,12 @@ from pathlib import Path
 from typing import Optional, List, Dict
 from datetime import datetime, timedelta
 
-from meal_time.models.recipe import Recipe
-from meal_time.ml.step_time_predictor import StepTimePredictor
-from meal_time.services.timeline_service import TimelineService
-from meal_time.services.validation_service import ValidationService
-from meal_time.services.web_scraper_service import WebScraperService
+from src.meal_time_logic.models.recipe import Recipe
+from src.meal_time_logic.services.step_time_parser_service import process_recipe_steps
+from src.meal_time_logic.ml.step_time_predictor import StepTimePredictor
+from src.meal_time_logic.services.timeline_service import TimelineService
+from src.meal_time_logic.services.validation_service import ValidationService
+from src.meal_time_logic.services.web_scraper_service import WebScraperService
 from exceptions import *
 from config import Config
 
@@ -22,13 +23,10 @@ class RecipeService:
         else:
             self.storage_path = self.config.RECIPES_FILE
 
-        print(f"Loading recipes from: {self.storage_path.absolute()}")
-
         # Ensure the directory exists
         self.storage_path.parent.mkdir(parents=True, exist_ok=True)
 
         self.recipes = self._load()
-        print(f"Loaded {len(self.recipes)} recipes")
 
         self.predictor = StepTimePredictor()
         self.timeline_service = TimelineService()
@@ -50,7 +48,6 @@ class RecipeService:
                     return []
 
                 data = json.loads(content)
-                print(f"Found {len(data)} recipes in file")
                 recipes = []
 
                 for i, recipe_data in enumerate(data):
@@ -131,16 +128,20 @@ class RecipeService:
     def generate_missing_step_times(self):
         """Use ML predictor to fill missing step times"""
         try:
-            changed = False
+            changed_recipes = []
             for recipe in self.recipes:
                 if not recipe.step_times or len(recipe.step_times) != len(recipe.steps):
                     print(f"Generating step times for: {recipe.name}")
                     recipe.step_times = [self.predictor.predict(step) for step in recipe.steps]
-                    changed = True
+                    changed_recipes.append(recipe.name)
 
-            if changed:
+            if changed_recipes:
                 self._save()
-                print("Updated recipes with predicted step times")
+                print(f"Updated {len(changed_recipes)} recipes with predicted step times")
+                return {"updated_count": len(changed_recipes), "updated_recipes": changed_recipes}
+            else:
+                return {"updated_count": 0, "updated_recipes": []}
+
         except Exception as e:
             raise StepTimePredictionException(f"Failed to generate step times: {e}")
 
@@ -369,3 +370,135 @@ class RecipeService:
                 "success": False,
                 "error": str(e)
             }
+
+    def process_recipe_step_times(self, recipe: Recipe) -> Recipe:
+        """
+        Process a recipe to extract/predict step times using the new parser.
+        Returns a new recipe with updated steps and step_times.
+        """
+
+        if not recipe.steps:
+            return recipe
+
+        # Process steps to extract times
+        expanded_steps, step_times, confidence_info = process_recipe_steps(recipe.steps)
+
+        # Create updated recipe
+        updated_recipe = Recipe(
+            name=recipe.name,
+            ingredients=recipe.ingredients,
+            steps=expanded_steps,
+            prep_time=recipe.prep_time,
+            cook_time=recipe.cook_time,
+            total_time=recipe.total_time,
+            step_times=step_times
+        )
+
+        # Update total time if not set
+        if not updated_recipe.total_time and step_times:
+            updated_recipe.total_time = sum(step_times)
+
+        # Store confidence information (you might want to add this to Recipe model)
+        # For now, we'll just use it internally
+
+        return updated_recipe
+
+    def enhance_all_recipe_times(self):
+        """
+        Re-process all recipes to improve step time detection.
+        This will find times in step text and split multi-time steps.
+        """
+        try:
+            enhanced_count = 0
+            for i, recipe in enumerate(self.recipes):
+                print(f"Processing recipe {i + 1}/{len(self.recipes)}: {recipe.name}")
+
+                original_step_count = len(recipe.steps)
+                enhanced_recipe = self.process_recipe_step_times(recipe)
+
+                # Only update if we made improvements
+                if (len(enhanced_recipe.steps) != original_step_count or
+                        enhanced_recipe.step_times != recipe.step_times):
+                    self.recipes[i] = enhanced_recipe
+                    enhanced_count += 1
+                    print(f"  Enhanced: {original_step_count} -> {len(enhanced_recipe.steps)} steps")
+
+            if enhanced_count > 0:
+                self._save()
+                print(f"Enhanced {enhanced_count} recipes with better step timing")
+            else:
+                print("All recipes already have good step timing")
+
+        except Exception as e:
+            raise StepTimePredictionException(f"Failed to enhance recipe times: {e}")
+
+    def add_recipe_with_time_processing(self, recipe: Recipe):
+        """
+        Add a recipe with automatic step time processing.
+        This will parse times from step text and predict missing times.
+        """
+        # Process step times first
+        processed_recipe = self.process_recipe_step_times(recipe)
+
+        # Then use the normal add process with validation
+        self.add_recipe(processed_recipe)
+
+        return processed_recipe
+
+    def update_recipe_with_time_processing(self, recipe: Recipe):
+        """
+        Update a recipe with automatic step time processing.
+        """
+        # Process step times first
+        processed_recipe = self.process_recipe_step_times(recipe)
+
+        # Then use the normal update process
+        self.update_recipe(processed_recipe)
+
+        return processed_recipe
+
+    def get_step_time_analysis(self, recipe: Recipe) -> Dict:
+        """
+        Analyze a recipe's step times and return detailed information.
+        """
+
+        # Process the steps
+        expanded_steps, step_times, confidence_info = process_recipe_steps(recipe.steps)
+
+        # Calculate statistics
+        total_time = sum(step_times)
+        extracted_count = sum(1 for c in confidence_info if c == 'extracted')
+        predicted_count = sum(1 for c in confidence_info if c == 'predicted')
+
+        # Find steps that might need attention
+        needs_review = []
+        for i, (step, time_val, conf) in enumerate(zip(expanded_steps, step_times, confidence_info)):
+            if conf == 'predicted' and time_val == 5:  # Default prediction
+                needs_review.append({
+                    'step_number': i + 1,
+                    'text': step,
+                    'reason': 'Using default prediction - may need manual review'
+                })
+            elif 'until' in step.lower() and conf == 'predicted':
+                needs_review.append({
+                    'step_number': i + 1,
+                    'text': step,
+                    'reason': 'Vague timing ("until done") - consider specifying time'
+                })
+
+        return {
+            'original_steps': len(recipe.steps),
+            'processed_steps': len(expanded_steps),
+            'total_time_minutes': total_time,
+            'extracted_times': extracted_count,
+            'predicted_times': predicted_count,
+            'confidence_breakdown': {
+                'extracted': extracted_count,
+                'predicted': predicted_count,
+                'user_set': sum(1 for c in confidence_info if c == 'user_set')
+            },
+            'needs_review': needs_review,
+            'expanded_steps': expanded_steps,
+            'step_times': step_times,
+            'confidence_info': confidence_info
+        }

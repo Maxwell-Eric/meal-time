@@ -1,4 +1,4 @@
-# meal_time/exceptions.py
+# meal_time_logic/exceptions.py
 
 class MealTimeException(Exception):
     """Base exception for meal-time app"""

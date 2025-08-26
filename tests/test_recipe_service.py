@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 import pytest
 from datetime import datetime, timedelta
-from meal_time.models.recipe import Recipe
-from meal_time.services.recipe_service import RecipeService
+from src.meal_time_logic.models import Recipe
+from src.meal_time_logic.services.recipe_service import RecipeService
 
 
 @pytest.fixture

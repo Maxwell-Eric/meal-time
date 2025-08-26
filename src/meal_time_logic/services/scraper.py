@@ -1,7 +1,7 @@
 
 
-from meal_time.models.recipe import Recipe
-from meal_time.ml.step_time_predictor import StepTimePredictor
+from src.meal_time_logic.models.recipe import Recipe
+from src.meal_time_logic.ml.step_time_predictor import StepTimePredictor
 from recipe_scrapers import scrape_me  # assuming you are using this library
 
 

@@ -1,6 +1,6 @@
 # import_web.py
 import streamlit as st
-from meal_time.services.recipe_service import RecipeService
+from src.meal_time_logic.services.recipe_service import RecipeService
 
 
 def show(service: RecipeService):

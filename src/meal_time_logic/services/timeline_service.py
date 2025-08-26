@@ -1,9 +1,9 @@
-# meal_time/services/timeline_service.py
+# meal_time_logic/services/timeline_service.py
 from datetime import datetime, timedelta
-from typing import List, Dict, Optional
+from typing import List, Dict
 from dataclasses import dataclass
 
-from meal_time.models.recipe import Recipe
+from src.meal_time_logic.models.recipe import Recipe
 from config import Config
 
 

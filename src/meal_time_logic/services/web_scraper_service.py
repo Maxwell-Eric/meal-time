@@ -1,6 +1,6 @@
-# meal_time/services/web_scraper_service.py
-from meal_time.models.recipe import Recipe
-from meal_time.ml.step_time_predictor import StepTimePredictor
+# meal_time_logic/services/web_scraper_service.py
+from src.meal_time_logic.models.recipe import Recipe
+from src.meal_time_logic.ml.step_time_predictor import StepTimePredictor
 try:
     from recipe_scrapers import scrape_me
 except ImportError:

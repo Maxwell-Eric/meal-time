@@ -1,4 +1,4 @@
-# meal_time/config.py
+# meal_time_logic/config.py
 from pathlib import Path
 
 
