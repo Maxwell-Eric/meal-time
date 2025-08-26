@@ -1,8 +1,7 @@
-# meal_time/services/validation_service.py
-from datetime import datetime, timedelta
-from typing import List, Dict, Optional
-from meal_time.models.recipe import Recipe
-from exceptions import *
+# meal_time_logic/services/validation_service.py
+from datetime import datetime
+from typing import List, Dict
+from src.meal_time_logic.models.recipe import Recipe
 from config import Config
 
 

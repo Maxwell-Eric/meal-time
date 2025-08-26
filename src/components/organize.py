@@ -1,6 +1,6 @@
 import streamlit as st
-from datetime import datetime, time, date, timedelta
-from meal_time.services.recipe_service import RecipeService
+from datetime import datetime, time, date
+from src.meal_time_logic.services.recipe_service import RecipeService
 
 
 def show(service: RecipeService):

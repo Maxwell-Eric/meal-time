@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from meal_time.models.recipe import Recipe
+from src.meal_time_logic.models.recipe import Recipe
 
 
 @dataclass

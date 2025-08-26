@@ -1,4 +1,4 @@
-# meal_time/models/step.py
+# meal_time_logic/models/step.py
 from typing import Optional
 
 class Step:
