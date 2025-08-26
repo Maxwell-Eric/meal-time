@@ -12,7 +12,7 @@ st.set_page_config(
 if 'recipe_service' not in st.session_state:
     st.error("⚠️ Recipe service not initialized. Please go back to the home page first.")
     if st.button("🏠 Go to Home"):
-        st.switch_page("app.py")
+        st.switch_page("Home.py")
     st.stop()
 
 service = st.session_state.recipe_service
